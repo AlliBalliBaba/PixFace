@@ -1,0 +1,49 @@
+body {
+    font-family: monospace;
+    background: rgb(223, 236, 233);
+}
+
+.border-box {
+    background: white;
+    border-radius: 7px;
+    margin: 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.line-height {
+    line-height: 2.5;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+button {
+    cursor: pointer;
+    height: 40px;
+    background: rgb(255, 136, 0);
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: rgb(252, 61, 36);
+}
+
+#text1 {
+    margin: 20px;
+}
+
+#transferContainer {
+    margin-top: 80px;
+}
+
+#btnContainer {
+    margin: 0 20px;
+}

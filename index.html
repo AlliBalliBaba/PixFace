@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Doodles To Faces</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="./utils.js"></script>
+    <script src="./pix2pix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="text1">
+        <h1>Make your doodles come to life as abdominations!</h1>
+        <p>Draw a face on the left canvas and press <b>GENERATE</b> to create a real life equivalent.</p>
+        <p><b>Patience.</b> This might take a few seconds.</p>
+
+    </div>
+
+    <div class="flex">
+        <div>
+            <div id="canvasContainer"></div>
+            <div id="btnContainer" class="flex flex-space-between">
+                <button onClick="clearCanvas()">Clear</button>
+                <button onClick="getRandomOutput()">Random</button>
+            </div>
+        </div>
+        <div id="transferContainer">
+            <button id="transferBtn" class="btn" onClick="loadIm()">GENERATE</button>
+            <p id="status">--loading--</p>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script src="./index.js">
+    </script>
+    <p> </p>
+    <p>
+        <font size="2"><b>If the Generator is not working properly, reloading the page can help.</b></font>
+    </p>
+    <p>
+        <font size="2">This image generator is based on pix2pix for tensorflow (https://github.com/affinelayer/pix2pix-tensorflow).</font>
+    </p>
+    <p>
+        <font size="2">Read the original paper here: https://arxiv.org/abs/1611.07004</font>
+    </p>
+
+</body>
+
+</html>

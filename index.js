@@ -35,6 +35,11 @@ function setup() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
+
+        inputCanvas.addEventListener("touchstart", function(event) { event.preventDefault() })
+        inputCanvas.addEventListener("touchmove", function(event) { event.preventDefault() })
+        inputCanvas.addEventListener("touchend", function(event) { event.preventDefault() })
+        inputCanvas.addEventListener("touchcancel", function(event) { event.preventDefault() })
     } else {
         mobile = false;
     }

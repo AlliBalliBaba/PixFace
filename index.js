@@ -5,8 +5,8 @@ let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetaile
     isTransfering = false;
 var mobile = false;
 
-var lastx;
-var lasty;
+var lastx = 0;
+var lasty = 0;
 
 var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
 
@@ -52,6 +52,11 @@ function draw() {
         if (!mobile) {
             strokeWeight(8);
             line(mouseX, mouseY, pmouseX, pmouseY);
+        } else {
+            strokeWeight(8);
+            line(mouseX, mouseY, lastx, lasty);
+            lastx = mouseX;
+            lasty = mousey;
         }
     }
 }
@@ -129,28 +134,13 @@ function getRandomOutput() {
 }
 
 
-//function mobileReady() {
-
-document.ontouchmove = function(e) { e.preventDefault(); }
-
-
-function dot() {
+function touchStarted() {
     strokeWeight(8);
-    line(mouseX, mouseY, mouseX, mouseY);
+    lastx = mousex;
+    lasty = mousey;
 }
 
-function line() {
-    strokeWeight(8);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-}
 
-inputCanvas.ontouchstart = function(event) {
-    event.preventDefault();
-    dot();
-}
 
-inputCanvas.ontouchmove = function(event) {
-        event.preventDefault();
-        line();
-    }
-    //}
+
+//}

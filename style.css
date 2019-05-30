@@ -66,10 +66,6 @@ button:hover {
     margin: 20px;
 }
 
-#canvascontainer {
-    touch-action: none;
-}
-
 #transferContainer {
     margin-top: 80px;
 }

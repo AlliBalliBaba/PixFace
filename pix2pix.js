@@ -15,6 +15,7 @@ class Pix2pix {
     }
 
     async transfer(inputElement, callback = () => {}) {
+        tf.setBackend('cpu');
         const input = tf.browser.fromPixels(inputElement);
         const inputData = input.dataSync();
         const floatInput = tf.tensor3d(inputData, input.shape, 'float32');
@@ -100,6 +101,7 @@ class Pix2pix {
         await tf.nextFrame();
         callback(array3DToImage(result));
     }
+
 }
 
 const pix2pix = (model, callback = () => {}) => new Pix2pix(model, callback);

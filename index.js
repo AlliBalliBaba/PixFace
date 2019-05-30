@@ -49,8 +49,8 @@ function setup() {
 // Draw on the canvas when mouse is pressed
 function draw() {
     if (mouseIsPressed) {
-        strokeWeight(8)
         if (!mobile) {
+            strokeWeight(8);
             line(mouseX, mouseY, pmouseX, pmouseY);
         }
     }
@@ -134,43 +134,23 @@ function mobileReady() {
     document.ontouchmove = function(e) { e.preventDefault(); }
 
 
-    function dot(x, y) {
-        var context = inputCanvas.getContext("2d");
-        context.beginPath();
-        context.fillStyle = "#000000";
-        context.arc(x, y, 1, 0, Math.PI * 2, true);
-        context.fill();
-        context.stroke();
-        context.closePath();
+    function dot() {
+        strokeWeight(8);
+        line(mouseX, mouseY, mouseX, mouseY);
     }
 
-    function line(fromx, fromy, tox, toy) {
-        var context = inputCanvas.getContext("2d");
-        context.beginPath();
-        context.moveTo(fromx, fromy);
-        context.lineTo(tox, toy);
-        context.stroke();
-        context.closePath();
+    function line() {
+        strokeWeight(8);
+        line(mouseX, mouseY, pmouseX, pmouseY);
     }
 
     inputCanvas.ontouchstart = function(event) {
         event.preventDefault();
-        var canvastop = inputCanvas.offsetTop;
-        lastx = event.touches[0].clientX;
-        lasty = event.touches[0].clientY - canvastop;
-
-        dot(lastx, lasty);
+        dot();
     }
 
     inputCanvas.ontouchmove = function(event) {
         event.preventDefault();
-        var canvastop = inputCanvas.offsetTop;
-        var newx = event.touches[0].clientX;
-        var newy = event.touches[0].clientY - canvastop;
-
-        line(lastx, lasty, newx, newy);
-
-        lastx = newx;
-        lasty = newy;
+        line();
     }
 }

@@ -1,22 +1,26 @@
 const SIZE = 256,
-    sampleNum = 9;
-let inputCanvas, outputContainer, statusMsg, transferBtn, sampleIndex = 0,
+    sampleNum = 14;
+let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetailedBtn, sampleIndex = 0,
     modelReady = false,
     isTransfering = false;
 const inputImgs = [],
     outputImgs = [];
+const mobile = false;
 
-const PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
+var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
 
 function setup() {
     // Create canvas
     inputCanvas = createCanvas(SIZE, SIZE);
     inputCanvas.class('border-box pencil').parent('canvasContainer');
 
+
     // Selcect output div container
     outputContainer = select('#output');
     statusMsg = select('#status');
     transferBtn = select('#transferBtn').hide();
+    detailedBtn = select('#detailedButton').show();
+    undetailedBtn = select('#undetailedButton').hide();
 
     // Display initial input image
     loadImage('./images/input.png', inputImg => image(inputImg, 0, 0));
@@ -41,14 +45,40 @@ function setup() {
     // Set stroke to black
     stroke(0);
     pixelDensity(1);
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        mobile = true;
+    }
+    //usePencil();
+    document.getElementById("lotxt").innerHTML = "";
 }
 
 // Draw on the canvas when mouse is pressed
 function draw() {
     if (mouseIsPressed) {
         strokeWeight(8)
-        line(mouseX, mouseY, pmouseX, pmouseY);
+        if (!mobile) {
+            line(mouseX, mouseY, pmouseX, pmouseY);
+        } else {
+            line(mouseX, mouseY, mouseX, mouseY);
+        }
     }
+}
+
+function loadDetailed() {
+    transferBtn.hide();
+    statusMsg.html('loading...');
+    PixFace = pix2pix('./model/PixFaceHeavy.pict', modelLoaded);
+    undetailedBtn.show();
+    detailedBtn.hide();
+}
+
+function loadCheap() {
+    transferBtn.hide();
+    statusMsg.html('loading...');
+    PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
+    undetailedBtn.show();
+    detailedBtn.hide();
 }
 
 //function mouseReleased() {
@@ -59,13 +89,16 @@ function draw() {
 
 function loadIm() {
     if (!isTransfering) {
-        let out = createImg('./images/output.png');
-        outputContainer.html('');
-        out.class('border-box').parent('output');
+        document.getElementById("lotxt").innerHTML = "GENERATING..";
+        //let out = createImg('./images/output.png');
+        //outputContainer.html('');
+        //out.class('border-box').parent('output');
         setTimeout('transfer();', 800);
+        //transfer();
+
         isTransfering = true;
-        document.getElementById("transferBtn").disabled = true;
-        statusMsg.html('loading...');
+        transferBtn.hide();
+        statusMsg.html('loading....');
     }
 }
 
@@ -93,8 +126,10 @@ function transfer() {
         createImg(result.src).class('border-box').parent('output');
         statusMsg.html('--ready--');
         isTransfering = false;
+        transferBtn.show();
+        document.getElementById("lotxt").innerHTML = "";
     });
-    document.getElementById("transferBtn").disabled = false;
+
 }
 
 // A function to be called when the models have loaded
@@ -111,25 +146,21 @@ function clearCanvas() {
 }
 
 function getRandomOutput() {
-    image(inputImgs[sampleIndex], 0, 0);
+    num = getRndInteger(1, sampleNum + 1);
+    thisDirectory = './images/input' + num + '.png';
+    loadImage(thisDirectory, inputImg => image(inputImg, 0, 0));
+
+
+
     //outputContainer.html('');
     //outputImgs[sampleIndex].show().parent('output');
 
-    sampleIndex = getRndInteger(0, sampleNum);
 
-    if (sampleIndex > sampleNum) sampleIndex = 0;
+
+    //if (sampleIndex > sampleNum) sampleIndex = 0;
 }
 
 function usePencil() {
-    stroke(0);
-    strokeWeight(1);
-    inputCanvas.removeClass('eraser');
-    inputCanvas.addClass('pencil');
-}
 
-function useEraser() {
-    stroke(255);
-    strokeWeight(15);
-    inputCanvas.removeClass('pencil');
-    inputCanvas.addClass('eraser');
+    inputCanvas.addClass('pencil');
 }

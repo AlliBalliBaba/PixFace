@@ -31,16 +31,7 @@ function setup() {
     out.class('border-box').parent('output');
 
     // Load other sample input/output images
-    for (let i = 1; i <= sampleNum; i += 1) {
-        loadImage(`./images/input${i}.png`, inImg => {
-            inputImgs.push(inImg);
-            //let outImg = createImg(`./images/output.png`);
-            //outImg.hide().class('border-box');
-            //outputImgs.push(outImg);
-        });
-        //outputImgs = createImg(`./images/output.png`)
-        //outputImgs.hide().class('border-box');
-    }
+
 
     // Set stroke to black
     stroke(0);

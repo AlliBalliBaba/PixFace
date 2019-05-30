@@ -4,3 +4,5 @@ Original pix2pix paper: https://arxiv.org/abs/1611.07004
 The generator produces more or less realistic faces from doodles.
 The model was trained in python and exported to tensorflowjs. 
 
+Try out the generator here: https://alliballibaba.github.io/PixFace/
+

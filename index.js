@@ -136,8 +136,8 @@ function getRandomOutput() {
 
 function touchStarted() {
     strokeWeight(8);
-    lastx = mousex;
-    lasty = mousey;
+    lastx = mouseX;
+    lasty = mouseY;
 }
 
 

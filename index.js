@@ -38,7 +38,7 @@ function setup() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
-        mobileReady();
+
     } else {
         mobile = false;
     }
@@ -129,28 +129,28 @@ function getRandomOutput() {
 }
 
 
-function mobileReady() {
+//function mobileReady() {
 
-    document.ontouchmove = function(e) { e.preventDefault(); }
+document.ontouchmove = function(e) { e.preventDefault(); }
 
 
-    function dot() {
-        strokeWeight(8);
-        line(mouseX, mouseY, mouseX, mouseY);
-    }
+function dot() {
+    strokeWeight(8);
+    line(mouseX, mouseY, mouseX, mouseY);
+}
 
-    function line() {
-        strokeWeight(8);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-    }
+function line() {
+    strokeWeight(8);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+}
 
-    inputCanvas.ontouchstart = function(event) {
-        event.preventDefault();
-        dot();
-    }
+inputCanvas.ontouchstart = function(event) {
+    event.preventDefault();
+    dot();
+}
 
-    inputCanvas.ontouchmove = function(event) {
+inputCanvas.ontouchmove = function(event) {
         event.preventDefault();
         line();
     }
-}
+    //}

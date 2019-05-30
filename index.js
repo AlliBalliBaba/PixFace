@@ -54,7 +54,7 @@ function draw() {
             line(mouseX, mouseY, pmouseX, pmouseY);
         } else {
             strokeWeight(8);
-            line(mouseX, mouseY, lastx, lasty);
+            line(mouseX, mouseY, pmouseX, pmouseY);
             lastx = mouseX;
             lasty = mousey;
         }

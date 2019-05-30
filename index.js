@@ -52,8 +52,6 @@ function draw() {
         if (!mobile) {
             strokeWeight(8);
             line(mouseX, mouseY, pmouseX, pmouseY);
-        } else {
-
         }
     }
 }
@@ -138,10 +136,12 @@ function touchStarted() {
 }
 
 function touchMoved() {
-    strokeWeight(8);
-    line(mouseX, mouseY, lastx, lasty);
-    lastx = mouseX;
-    lasty = mouseY;
+    if (mobile) {
+        strokeWeight(8);
+        line(mouseX, mouseY, lastx, lasty);
+        lastx = mouseX;
+        lasty = mouseY;
+    }
 }
 
 

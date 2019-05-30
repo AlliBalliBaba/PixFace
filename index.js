@@ -38,7 +38,7 @@ function setup() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
-
+        mobileReady();
     } else {
         mobile = false;
     }
@@ -129,42 +129,48 @@ function getRandomOutput() {
 }
 
 
-function dot(x, y) {
-    var context = inputCanvas.getContext("2d");
-    context.beginPath();
-    context.fillStyle = "#000000";
-    context.arc(x, y, 1, 0, Math.PI * 2, true);
-    context.fill();
-    context.stroke();
-    context.closePath();
-}
+function mobileReady() {
 
-function line(fromx, fromy, tox, toy) {
-    var context = inputCanvas.getContext("2d");
-    context.beginPath();
-    context.moveTo(fromx, fromy);
-    context.lineTo(tox, toy);
-    context.stroke();
-    context.closePath();
-}
+    document.ontouchmove = function(e) { e.preventDefault(); }
 
-inputCanvas.ontouchstart = function(event) {
-    event.preventDefault();
-    var canvastop = inputCanvas.offsetTop;
-    lastx = event.touches[0].clientX;
-    lasty = event.touches[0].clientY - canvastop;
 
-    dot(lastx, lasty);
-}
+    function dot(x, y) {
+        var context = inputCanvas.getContext("2d");
+        context.beginPath();
+        context.fillStyle = "#000000";
+        context.arc(x, y, 1, 0, Math.PI * 2, true);
+        context.fill();
+        context.stroke();
+        context.closePath();
+    }
 
-inputCanvas.ontouchmove = function(event) {
-    event.preventDefault();
-    var canvastop = inputCanvas.offsetTop;
-    var newx = event.touches[0].clientX;
-    var newy = event.touches[0].clientY - canvastop;
+    function line(fromx, fromy, tox, toy) {
+        var context = inputCanvas.getContext("2d");
+        context.beginPath();
+        context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);
+        context.stroke();
+        context.closePath();
+    }
 
-    line(lastx, lasty, newx, newy);
+    inputCanvas.ontouchstart = function(event) {
+        event.preventDefault();
+        var canvastop = inputCanvas.offsetTop;
+        lastx = event.touches[0].clientX;
+        lasty = event.touches[0].clientY - canvastop;
 
-    lastx = newx;
-    lasty = newy;
+        dot(lastx, lasty);
+    }
+
+    inputCanvas.ontouchmove = function(event) {
+        event.preventDefault();
+        var canvastop = inputCanvas.offsetTop;
+        var newx = event.touches[0].clientX;
+        var newy = event.touches[0].clientY - canvastop;
+
+        line(lastx, lasty, newx, newy);
+
+        lastx = newx;
+        lasty = newy;
+    }
 }

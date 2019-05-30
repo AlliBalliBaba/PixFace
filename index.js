@@ -3,7 +3,6 @@ const SIZE = 256,
 let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetailedBtn, sampleIndex = 0,
     modelReady = false,
     isTransfering = false;
-const inputImgs = [];
 var mobile = false;
 
 var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
@@ -28,7 +27,6 @@ function setup() {
     let out = createImg('./images/input.png');
     outputContainer.html('');
     out.class('border-box').parent('output');
-
 
 
     // black stoke
@@ -79,7 +77,6 @@ function loadIm() {
         document.getElementById("lotxt").innerHTML = "GENERATING..";
 
         setTimeout('transfer();', 600);
-
         isTransfering = true;
         transferBtn.hide();
         statusMsg.html('loading....');
@@ -127,15 +124,6 @@ function getRandomOutput() {
     num = getRndInteger(1, sampleNum + 1);
     thisDirectory = './images/input' + num + '.png';
     loadImage(thisDirectory, inputImg => image(inputImg, 0, 0));
-
-
-
-    //outputContainer.html('');
-    //outputImgs[sampleIndex].show().parent('output');
-
-
-
-    //if (sampleIndex > sampleNum) sampleIndex = 0;
 }
 
 function usePencil() {

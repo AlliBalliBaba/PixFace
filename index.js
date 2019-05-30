@@ -5,6 +5,9 @@ let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetaile
     isTransfering = false;
 var mobile = false;
 
+var lastx;
+var lasty;
+
 var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
 
 
@@ -36,10 +39,6 @@ function setup() {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
 
-        inputCanvas.addEventListener("touchstart", function(event) { event.preventDefault() })
-        inputCanvas.addEventListener("touchmove", function(event) { event.preventDefault() })
-        inputCanvas.addEventListener("touchend", function(event) { event.preventDefault() })
-        inputCanvas.addEventListener("touchcancel", function(event) { event.preventDefault() })
     } else {
         mobile = false;
     }
@@ -53,8 +52,6 @@ function draw() {
         strokeWeight(8)
         if (!mobile) {
             line(mouseX, mouseY, pmouseX, pmouseY);
-        } else {
-            line(mouseX, mouseY, mouseX, mouseY);
         }
     }
 }
@@ -131,7 +128,43 @@ function getRandomOutput() {
     loadImage(thisDirectory, inputImg => image(inputImg, 0, 0));
 }
 
-function usePencil() {
 
-    inputCanvas.addClass('pencil');
+function dot(x, y) {
+    var context = inputCanvas.getContext("2d");
+    context.beginPath();
+    context.fillStyle = "#000000";
+    context.arc(x, y, 1, 0, Math.PI * 2, true);
+    context.fill();
+    context.stroke();
+    context.closePath();
+}
+
+function line(fromx, fromy, tox, toy) {
+    var context = inputCanvas.getContext("2d");
+    context.beginPath();
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.stroke();
+    context.closePath();
+}
+
+inputCanvas.ontouchstart = function(event) {
+    event.preventDefault();
+
+    lastx = event.touches[0].clientX;
+    lasty = event.touches[0].clientY - canvastop;
+
+    dot(lastx, lasty);
+}
+
+inputCanvas.ontouchmove = function(event) {
+    event.preventDefault();
+
+    var newx = event.touches[0].clientX;
+    var newy = event.touches[0].clientY - canvastop;
+
+    line(lastx, lasty, newx, newy);
+
+    lastx = newx;
+    lasty = newy;
 }

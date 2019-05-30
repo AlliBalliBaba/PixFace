@@ -134,11 +134,11 @@ function getRandomOutput() {
 }
 
 
-function touchStarted() {
-    strokeWeight(8);
-    lastx = mouseX;
-    lasty = mouseY;
-}
+//function touchStarted() {
+//  strokeWeight(8);
+//   lastx = mouseX;
+//   lasty = mouseY;
+//}
 
 
 

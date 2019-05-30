@@ -150,7 +150,7 @@ function line(fromx, fromy, tox, toy) {
 
 inputCanvas.ontouchstart = function(event) {
     event.preventDefault();
-
+    var canvastop = inputCanvas.offsetTop;
     lastx = event.touches[0].clientX;
     lasty = event.touches[0].clientY - canvastop;
 
@@ -159,7 +159,7 @@ inputCanvas.ontouchstart = function(event) {
 
 inputCanvas.ontouchmove = function(event) {
     event.preventDefault();
-
+    var canvastop = inputCanvas.offsetTop;
     var newx = event.touches[0].clientX;
     var newy = event.touches[0].clientY - canvastop;
 

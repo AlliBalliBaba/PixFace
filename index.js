@@ -53,10 +53,7 @@ function draw() {
             strokeWeight(8);
             line(mouseX, mouseY, pmouseX, pmouseY);
         } else {
-            strokeWeight(8);
-            line(mouseX, mouseY, lastx, lasty);
-            lastx = mouseX;
-            lasty = mouseY;
+
         }
     }
 }
@@ -140,6 +137,12 @@ function touchStarted() {
     lasty = mouseY;
 }
 
+function touchMoved() {
+    strokeWeight(8);
+    line(mouseX, mouseY, lastx, lasty);
+    lastx = mouseX;
+    lasty = mouseY;
+}
 
 
 

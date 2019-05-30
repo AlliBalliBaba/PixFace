@@ -3,44 +3,44 @@ const SIZE = 256,
 let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetailedBtn, sampleIndex = 0,
     modelReady = false,
     isTransfering = false;
-const inputImgs = [],
-    outputImgs = [];
-const mobile = false;
+const inputImgs = [];
+var mobile = false;
 
 var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
 
+
 function setup() {
-    // Create canvas
+    // Create thecanvas
     inputCanvas = createCanvas(SIZE, SIZE);
     inputCanvas.class('border-box pencil').parent('canvasContainer');
 
 
-    // Selcect output div container
+    // define containers
     outputContainer = select('#output');
     statusMsg = select('#status');
     transferBtn = select('#transferBtn').hide();
     detailedBtn = select('#detailedButton').show();
     undetailedBtn = select('#undetailedButton').hide();
 
-    // Display initial input image
+    // Display initial images
     loadImage('./images/input.png', inputImg => image(inputImg, 0, 0));
 
-    // Display initial output image
     let out = createImg('./images/input.png');
     outputContainer.html('');
     out.class('border-box').parent('output');
 
-    // Load other sample input/output images
 
 
-    // Set stroke to black
+    // black stoke
     stroke(0);
     pixelDensity(1);
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
+    } else {
+        mobile = false;
     }
-    //usePencil();
+
     document.getElementById("lotxt").innerHTML = "";
 }
 
@@ -68,24 +68,17 @@ function loadCheap() {
     transferBtn.hide();
     statusMsg.html('loading...');
     PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
-    undetailedBtn.show();
-    detailedBtn.hide();
+    undetailedBtn.hide();
+    detailedBtn.show();
 }
 
-//function mouseReleased() {
-//    if (modelReady && !isTransfering) {
-//        transfer()
-//    }
-//}
+
 
 function loadIm() {
     if (!isTransfering) {
         document.getElementById("lotxt").innerHTML = "GENERATING..";
-        //let out = createImg('./images/output.png');
-        //outputContainer.html('');
-        //out.class('border-box').parent('output');
-        setTimeout('transfer();', 800);
-        //transfer();
+
+        setTimeout('transfer();', 600);
 
         isTransfering = true;
         transferBtn.hide();
@@ -100,20 +93,14 @@ function getRndInteger(min, max) {
 
 
 function transfer() {
-
-
-
     isTransfering = true;
 
-
-
-    // Select canvas DOM element
     let canvasElement = document.getElementById('defaultCanvas0');
-    // Apply pix2pix transformation
+    // pix2pix transformation
     PixFace.transfer(canvasElement, result => {
-        // Clear output container
+        // Clear container
         outputContainer.html('');
-        // Create an image based result
+        // Create output image 
         createImg(result.src).class('border-box').parent('output');
         statusMsg.html('--ready--');
         isTransfering = false;

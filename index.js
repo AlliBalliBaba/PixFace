@@ -38,7 +38,10 @@ function setup() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
-
+        document.getElementById("detailedButton").innerHTML = "load cheaper mobile model (shorter generation time)";
+        document.getElementById("undetailedButton").innerHTML = "load detailed mobile model (longer generation time)";
+        document.getElementById("detailedButton").onclick = loadVeryCheap;
+        document.getElementById("undetailedButton").onclick = loadCheap;
     } else {
         mobile = false;
     }
@@ -71,6 +74,16 @@ function loadCheap() {
     undetailedBtn.hide();
     detailedBtn.show();
 }
+
+function loadVeryCheap() {
+    transferBtn.hide();
+    statusMsg.html('loading...');
+    PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+    undetailedBtn.show();
+    detailedBtn.hide();
+}
+
+
 
 
 

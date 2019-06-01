@@ -1,5 +1,6 @@
 const SIZE = 256,
-    sampleNum = 14;
+    sampleNum = 17;
+var previous = -1;
 let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetailedBtn, sampleIndex = 0,
     modelReady = false,
     isTransfering = false;
@@ -138,8 +139,15 @@ function clearCanvas() {
 
 function getRandomOutput() {
     num = getRndInteger(1, sampleNum + 1);
+    if (num == previous) {
+        num++;
+        if (num > sampleNum) {
+            num = 0;
+        }
+    }
     thisDirectory = './images/input' + num + '.png';
     loadImage(thisDirectory, inputImg => image(inputImg, 0, 0));
+    previous = num;
 }
 
 

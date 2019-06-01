@@ -9,7 +9,7 @@ var mobile = false;
 var lastx = 0;
 var lasty = 0;
 
-var PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
+var PixFace;
 
 
 function setup() {
@@ -43,9 +43,10 @@ function setup() {
         document.getElementById("undetailedButton").innerHTML = "load cheap mobile model (shorter generation time)";
         document.getElementById("detailedButton").onclick = loadCheap;
         document.getElementById("undetailedButton").onclick = loadVeryCheap;
-        var PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+        PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
     } else {
         mobile = false;
+        PixFace = pix2pix('./model/PixFace.pict', modelLoaded)
     }
 
     document.getElementById("lotxt").innerHTML = "";

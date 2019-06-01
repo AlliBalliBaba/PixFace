@@ -38,10 +38,11 @@ function setup() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
-        document.getElementById("detailedButton").innerHTML = "load cheaper mobile model (shorter generation time)";
-        document.getElementById("undetailedButton").innerHTML = "load detailed mobile model (longer generation time)";
-        document.getElementById("detailedButton").onclick = loadVeryCheap;
-        document.getElementById("undetailedButton").onclick = loadCheap;
+        document.getElementById("detailedButton").innerHTML = "load detailed mobile model (longer generation time)";
+        document.getElementById("undetailedButton").innerHTML = "load cheap mobile model (shorter generation time)";
+        document.getElementById("detailedButton").onclick = loadCheap;
+        document.getElementById("undetailedButton").onclick = loadVeryCheap;
+        var PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
     } else {
         mobile = false;
     }

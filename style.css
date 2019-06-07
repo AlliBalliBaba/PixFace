@@ -74,6 +74,14 @@ button:hover {
     touch-action: none;
 }
 
+.inputCanv {
+    border: 3px solid white;
+}
+
+.outputCanv {
+    border: 3px solid white;
+}
+
 #btnContainer {
     margin: 0 20px;
 }

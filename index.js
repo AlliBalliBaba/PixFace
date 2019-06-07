@@ -15,7 +15,7 @@ var PixFace;
 function setup() {
     // Create thecanvas
     inputCanvas = createCanvas(SIZE, SIZE);
-    inputCanvas.class('border-box pencil').parent('canvasContainer');
+    inputCanvas.class('inputCanv').parent('canvasContainer');
 
 
     // define containers
@@ -30,7 +30,7 @@ function setup() {
 
     let out = createImg('./images/input.png');
     outputContainer.html('');
-    out.class('border-box').parent('output');
+    out.class('outputCanv').parent('output');
 
 
     // black stoke
@@ -41,7 +41,7 @@ function setup() {
         mobile = true;
         document.getElementById("detailedButton").innerHTML = "load detailed mobile model (longer generation time)";
         document.getElementById("undetailedButton").innerHTML = "load cheap mobile model (shorter generation time)";
-        document.getElementById("detailedButton").onclick = loadCheap;
+        document.getElementById("detailedButton").onclick = loadCheap2;
         document.getElementById("undetailedButton").onclick = loadVeryCheap;
         PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
     } else {
@@ -78,16 +78,21 @@ function loadCheap() {
     detailedBtn.show();
 }
 
-function loadVeryCheap() {
+function loadCheap2() {
     transferBtn.hide();
     statusMsg.html('loading...');
-    PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+    PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
     undetailedBtn.show();
     detailedBtn.hide();
 }
 
-
-
+function loadVeryCheap() {
+    transferBtn.hide();
+    statusMsg.html('loading...');
+    PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+    undetailedBtn.hide();
+    detailedBtn.show();
+}
 
 
 function loadIm() {
@@ -116,7 +121,7 @@ function transfer() {
         // Clear container
         outputContainer.html('');
         // Create output image 
-        createImg(result.src).class('border-box').parent('output');
+        createImg(result.src).class('outputCanv').parent('output');
         statusMsg.html('--ready--');
         isTransfering = false;
         transferBtn.show();

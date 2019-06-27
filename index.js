@@ -1,16 +1,14 @@
-const SIZE = 256,
-    sampleNum = 17;
 var previous = -1;
 let inputCanvas, outputContainer, statusMsg, transferBtn, detailedBtn, undetailedBtn, sampleIndex = 0,
     modelReady = false,
     isTransfering = false;
 var mobile = false;
-
 var lastx = 0;
 var lasty = 0;
-
 var PixFace;
 
+const SIZE = 256,
+    sampleNum = 17;
 
 function setup() {
     // Create thecanvas
@@ -25,28 +23,27 @@ function setup() {
     detailedBtn = select('#detailedButton').show();
     undetailedBtn = select('#undetailedButton').hide();
 
-    // Display initial images
+    // Display initial placeholder image
     loadImage('./images/input.png', inputImg => image(inputImg, 0, 0));
-
     let out = createImg('./images/input.png');
     outputContainer.html('');
     out.class('outputCanv').parent('output');
 
-
-    // black stoke
+    // stroke color to black
     stroke(0);
     pixelDensity(1);
 
+    //change the displayed model, if the website is viewed on mobile
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
         document.getElementById("detailedButton").innerHTML = "load detailed mobile model (longer generation time)";
         document.getElementById("undetailedButton").innerHTML = "load cheap mobile model (shorter generation time)";
         document.getElementById("detailedButton").onclick = loadCheap2;
         document.getElementById("undetailedButton").onclick = loadVeryCheap;
-        PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+        PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
     } else {
         mobile = false;
-        PixFace = pix2pix('./model/PixFace.pict', modelLoaded)
+        PixFace = pix2pix('./model/PixFace.pict', onModelLoad)
     }
 
     document.getElementById("lotxt").innerHTML = "";
@@ -62,56 +59,54 @@ function draw() {
     }
 }
 
+
+//change between the 3 GAN models
 function loadDetailed() {
-    transferBtn.hide();
-    statusMsg.html('loading...');
-    PixFace = pix2pix('./model/PixFaceHeavy.pict', modelLoaded);
+    hideButton();
+    PixFace = pix2pix('./model/PixFaceHeavy.pict', onModelLoad);
     undetailedBtn.show();
     detailedBtn.hide();
 }
 
 function loadCheap() {
-    transferBtn.hide();
-    statusMsg.html('loading...');
-    PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
+    hideButton();
+    PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
     undetailedBtn.hide();
     detailedBtn.show();
 }
 
 function loadCheap2() {
-    transferBtn.hide();
-    statusMsg.html('loading...');
-    PixFace = pix2pix('./model/PixFace.pict', modelLoaded);
+    hideButton();
+    PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
     undetailedBtn.show();
     detailedBtn.hide();
 }
 
 function loadVeryCheap() {
-    transferBtn.hide();
-    statusMsg.html('loading...');
-    PixFace = pix2pix('./model/PixFaceLightLight.pict', modelLoaded);
+    hideButton();
+    PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
     undetailedBtn.hide();
     detailedBtn.show();
 }
 
+function hideButton() {
+    transferBtn.hide();
+    statusMsg.html('loading...');
+}
 
+
+//prepare for the image transfer
 function loadIm() {
     if (!isTransfering) {
         document.getElementById("lotxt").innerHTML = "GENERATING..";
-
-        setTimeout('transfer();', 600);
+        setTimeout('transfer();', 300);
         isTransfering = true;
         transferBtn.hide();
         statusMsg.html('loading....');
     }
 }
 
-
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
+//transfer the image to pix2pix
 function transfer() {
     isTransfering = true;
 
@@ -130,8 +125,7 @@ function transfer() {
 
 }
 
-// A function to be called when the models have loaded
-function modelLoaded() {
+function onModelLoad() {
     if (!statusMsg) statusMsg = select('#status');
     statusMsg.html('--ready--');
     transferBtn.show();
@@ -143,6 +137,7 @@ function clearCanvas() {
     background(255);
 }
 
+//load a random sample image
 function getRandomOutput() {
     num = getRndInteger(1, sampleNum + 1);
     if (num == previous) {
@@ -156,7 +151,11 @@ function getRandomOutput() {
     previous = num;
 }
 
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
+//functions for drawing on mobile
 function touchStarted() {
     strokeWeight(8);
     lastx = mouseX;
@@ -171,7 +170,3 @@ function touchMoved() {
         lasty = mouseY;
     }
 }
-
-
-
-//}

@@ -3,7 +3,8 @@ A small, currently functional implementation of pix2pix tensorflow  by affinelay
 The generator produces realistic faces from doodles.
 The model was trained in python and exported for use in tensorflowjs. 
 
-Try out the generator here: https://alliballibaba.github.io/PixFace/
+Try out the generator here: https://alliballibaba.github.io/PixFace/. 
+The model was trained with 200 individual faces
 
 ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg) ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display2.jpg)
 

@@ -8,7 +8,7 @@ The model was trained with 200 individual faces
 
 ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg) ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display2.jpg)
 
-## How to export your model for use with javascript
+## How to export your model for use in javascript
 
 Once you've finished training your model using affinelayer's **pixpix.py** script, you can use the **export** mode to export only the generator to a new folder:
 

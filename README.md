@@ -5,7 +5,7 @@ The model was trained in python and exported for use in tensorflowjs.
 
 Try out the generator here: https://alliballibaba.github.io/PixFace/
 
-![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg)
+![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg) ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display2.jpg)
 
 ## How to export your model for use with javascript
 

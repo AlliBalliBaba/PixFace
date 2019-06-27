@@ -1,10 +1,11 @@
-A small, currently functional implementation of pix2pix tensorflow by affinelayer (https://github.com/affinelayer/pix2pix-tensorflow), prepared for client-side use in the browser 
+## PixFace pix2pix GAN
 
-This generator produces realistic faces from doodles.
+A small, currently functional implementation of pix2pix tensorflow by affinelayer (https://github.com/affinelayer/pix2pix-tensorflow), prepared for client-side use in the browser. Pix2pix is a Generative Adversarial Network, that creates an output image from an input image.
+
+This generator produces realistic faces from doodles and was trained with 200 individual images. 
 The model was trained in python and exported for use in tensorflowjs. 
 
 Try out the generator here: https://alliballibaba.github.io/PixFace/. 
-The model was trained with 200 individual faces
 
 ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg) ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display2.jpg)
 

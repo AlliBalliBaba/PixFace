@@ -58,6 +58,7 @@ body {
 
 button:hover {
     background-color: rgb(252, 61, 36);
+    cursor: pointer;
 }
 
 #text1 {
@@ -74,6 +75,10 @@ button:hover {
 
 .inputCanv {
     border: 3px solid white;
+}
+
+.inputCanv:hover {
+    cursor: url('./images/cursor.png'), default;
 }
 
 .outputCanv {

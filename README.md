@@ -1,14 +1,15 @@
-A small, currently functional implementation of pix2pix tensorflow by affinelayer (https://github.com/affinelayer/pix2pix-tensorflow), prepared for client-side use in the browser 
+## PixFace pix2pix
 
-The generator produces realistic faces from doodles.
+A small implementation of pix2pix tensorflow by affinelayer (https://github.com/affinelayer/pix2pix-tensorflow), prepared for client-side use in the browser. Pix2pix is a Conditional Adversarial Network, that creates an output image from an input image.
+
+This generator produces realistic faces from doodles and was trained with over 200 individual images. 
 The model was trained in python and exported for use in tensorflowjs. 
 
 Try out the generator here: https://alliballibaba.github.io/PixFace/. 
-The model was trained with 200 individual faces
 
 ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display1.jpg) ![alt text](https://github.com/AlliBalliBaba/PixFace/blob/master/images/display2.jpg)
 
-## How to export your model for use with javascript
+## How to export your model for use in javascript
 
 Once you've finished training your model using affinelayer's **pixpix.py** script, you can use the **export** mode to export only the generator to a new folder:
 

@@ -1,6 +1,7 @@
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Doodles To Faces</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="./utils.js"></script>
@@ -11,48 +12,57 @@
 
 </head>
 
-<body>
+<body style="zoom: 120%">
 
-    <div id="text1">
-        <h1>Make your doodles come to life as abdominations!</h1>
+    <div style="width: 50%;margin: auto;">
+        <div style="background: white;width:100%;text-align: left">
+
+            <h1>Make your doodles come to life as abdominations!</h1>
+        </div>
+
         <p>Draw a face on the left canvas and press <b>GENERATE</b> to create a real life equivalent.</p>
         <p><b>Patience.</b> This might take a few seconds.</p>
 
-    </div>
 
-    <div class="flex">
-        <div>
-            <div id="canvasContainer"></div>
-            <div id="btnContainer" class="flex flex-space-between">
-                <button class="btn" onClick="clearCanvas()">Clear</button>
-                <button class="btn" onClick="getRandomOutput()">Example</button>
+
+
+        <div class="flex">
+            <div>
+                <div id="canvasContainer"></div>
+                <div id="btnContainer" class="flex-space-between">
+                    <button class="btn" onClick="clearCanvas()">Clear</button>
+                    <button class="btn" onClick="getRandomOutput()">Example</button>
+                </div>
+            </div>
+            <div id="transferContainer">
+                <button id="transferBtn" class="btn" onClick="loadIm()">GENERATE</button>
+                <p id="status">--loading--</p>
+            </div>
+            <div class="container">
+                <div id="output"></div>
+                <div id="lotxt" class="centered">Centered</div>
             </div>
         </div>
-        <div id="transferContainer">
-            <button id="transferBtn" class="btn" onClick="loadIm()">GENERATE</button>
-            <p id="status">--loading--</p>
-        </div>
-        <div class="container">
-            <div id="output"></div>
-            <div id="lotxt" class="centered">Centered</div>
+        <script src="./index.js">
+        </script>
+        <div>
+            <p> ------------------------------------------------------------------------------------</p>
+
+            <button id="detailedButton" color="white" class="btn3" onClick="loadDetailed()">load detailed model (longer generation time)</button>
+            <button id="undetailedButton" color="white" class="btn3" onClick="loadCheap()">load cheap model (shorter generation time)</button>
+
+
+            <p> ------------------------------------------------------------------------------------</p>
+
+            <p>
+                <font size="2">This image generator is based on pix2pix for tensorflow (https://github.com/affinelayer/pix2pix-tensorflow).</font>
+            </p>
+            <p>
+                <font size="2">Works better on desktop.</font>
+            </p>
+
         </div>
     </div>
-    <script src="./index.js">
-    </script>
-    <p> ------------------------------------------------------------------------------------</p>
-
-    <button id="detailedButton" color="white" class="btn3" onClick="loadDetailed()">load detailed model (longer generation time)</button>
-    <button id="undetailedButton" color="white" class="btn3" onClick="loadCheap()">load cheap model (shorter generation time)</button>
-
-
-    <p> ------------------------------------------------------------------------------------</p>
-
-    <p>
-        <font size="2">This image generator is based on pix2pix for tensorflow (https://github.com/affinelayer/pix2pix-tensorflow).</font>
-    </p>
-    <p>
-        <font size="2">Works better on desktop.</font>
-    </p>
 
 </body>
 

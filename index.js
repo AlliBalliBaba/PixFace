@@ -38,10 +38,10 @@ function setup() {
         mobile = true;
         undetailedBtn.hide();
         detailedBtn.show();
-        PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
+        PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
     } else {
         mobile = false;
-        PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
+        PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
     }
 
     document.getElementById("lotxt").innerHTML = "";

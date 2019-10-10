@@ -1,3 +1,18 @@
+#box{
+    width: 75%;
+    margin-left: auto
+    ;margin-right: auto; 
+    background: linear-gradient(0deg, rgb(219, 248, 255) 0%, rgb(255, 255, 255) 100%);
+    padding: 30px;
+    -webkit-clip-path: polygon(0 30px, 0 100%, 100% 100%,100% 30px, 50% 20px);
+    clip-path: polygon(0 30px, 0 100%, 100% 100%,100% 30px, 50% 20px);
+   
+}
+
+h1{
+    text-align: center;
+}
+
 .centered {
     position: absolute;
     top: 45%;
@@ -15,7 +30,8 @@
 
 body {
     font-family: monospace;
-    background: rgb(223, 236, 233);
+    background: linear-gradient(76deg, rgba(255,255,255,1) 0%, rgba(245,255,228,1) 100%);
+    filter: drop-shadow(0 0 6px rgba(50, 50, 0, 0.5));
 }
 
 .border-box {
@@ -26,39 +42,34 @@ body {
 
 .flex {
     display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    flex-wrap : wrap
 }
 
 .line-height {
     line-height: 2.5;
 }
 
-.flex-space-between {}
+
 
 .btn {
     cursor: pointer;
     height: 40px;
-    background: rgb(255, 136, 0);
+    background: rgb(255, 127, 7);
     border-radius: 5px;
     border: none;
     color: white;
     font-family: monospace;
     font-size: 14px;
-}
-
-.btn3 {
-    cursor: pointer;
-    height: 40px;
-    background: rgb(216, 91, 18);
-    border-radius: 5px;
-    border: none;
-    color: white;
-    font-family: monospace;
-    font-size: 12px;
+    margin: 15px;
+    transition: all .2s ease-in-out;
 }
 
 button:hover {
-    background-color: rgb(252, 61, 36);
+    background-color: rgb(255, 29, 29);
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 #text1 {
@@ -71,6 +82,7 @@ button:hover {
 
 #canvasContainer {
     touch-action: none;
+    box-shadow: 0 0 10px black;
 }
 
 .inputCanv {
@@ -83,8 +95,6 @@ button:hover {
 
 .outputCanv {
     border: 3px solid white;
+    box-shadow: 0 0 10px black;
 }
 
-#btnContainer {
-    margin: auto;
-}

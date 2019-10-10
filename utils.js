@@ -1,3 +1,10 @@
+//convert uint to String, since Textdecoder doesn't work on IE and Edge
+function uintToString(uintArray) {
+  var encodedString = String.fromCharCode.apply(null, uintArray),
+      decodedString = decodeURIComponent(escape(encodedString));
+  return decodedString;
+}
+
 // Fetch weights from path
 const fetchWeights = (urlPath) => {
   return new Promise((resolve, reject) => {
@@ -11,6 +18,7 @@ const fetchWeights = (urlPath) => {
     xhr.open('GET', urlPath, true);
     xhr.responseType = 'arraybuffer';
     xhr.onload = () => {
+  
       if (xhr.status !== 200) {
         reject(new Error('missing model'));
         return;
@@ -30,8 +38,8 @@ const fetchWeights = (urlPath) => {
         parts.push(buf.slice(offset, offset + len));
         offset += len;
       }
-
-      const shapes = JSON.parse((new TextDecoder('utf8')).decode(parts[0]));
+      
+      const shapes = JSON.parse(uintToString(new Uint8Array(parts[0])));
       const index = new Float32Array(parts[1]);
       const encoded = new Uint8Array(parts[2]);
 
@@ -86,3 +94,6 @@ const array3DToImage = (tensor) => {
   outputImg.style.height = imgHeight;
   return outputImg;
 };
+
+
+

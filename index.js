@@ -53,7 +53,7 @@ function setup() {
 function draw() {
     if (mouseIsPressed) {
         if (!mobile) {
-            strokeWeight(8);
+            strokeWeight(7);
             line(mouseX, mouseY, pmouseX, pmouseY);
         }
     }
@@ -91,7 +91,7 @@ function loadVeryCheap() {
 
 function hideButton() {
     transferBtn.hide();
-    statusMsg.html('loading...');
+    statusMsg.html('loading..');
 }
 
 
@@ -102,7 +102,7 @@ function loadIm() {
         setTimeout('transfer();', 300);
         isTransfering = true;
         transferBtn.hide();
-        statusMsg.html('loading....');
+        statusMsg.html('loading..');
     }
 }
 

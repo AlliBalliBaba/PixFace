@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Doodles To Faces</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./utils.js"></script>
     <script src="./pix2pix.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.1.2/dist/tf.min.js"></script>
@@ -14,13 +15,13 @@
 
 <body>
 
-    <div style="width: 50%;margin: auto;">
-        <div style="background: white;width:100%;text-align: left">
+    <div id="box">
+        <div style="background: rgb(255, 255, 255);width:100%;text-align: left; margin: 10px;">
 
-            <h1>Make your doodles come to life as abdominations!</h1>
+            <h1 >Make your doodles come to life as abdominations!</h1>
         </div>
 
-        <p>Draw a face on the left canvas and press <b>GENERATE</b> to create a real life equivalent.</p>
+        <p style="margin-top: 60px;">Draw a face on the left canvas and press <b>GENERATE</b> to create a real life equivalent.</p>
         <p><b>Patience.</b> This might take a few seconds.</p>
 
 
@@ -30,13 +31,13 @@
             <div>
                 <div id="canvasContainer"></div>
                 <div id="btnContainer" class="flex-space-between">
-                    <button class="btn" onClick="clearCanvas()">Clear</button>
-                    <button class="btn" onClick="getRandomOutput()">Example</button>
+                    <button class="btn" onClick="clearCanvas()" style="margin-left: 0;"> <i class="fa fa-trash"></i> Clear</button>
+                    <button class="btn" onClick="getRandomOutput()"> <i class="fa fa-folder"></i> Example</button>
                 </div>
             </div>
             <div id="transferContainer">
-                <button id="transferBtn" class="btn" onClick="loadIm()">GENERATE</button>
-                <p id="status">--loading--</p>
+                <button id="transferBtn" class="btn" onClick="loadIm()">  GENERATE</button>
+                <p id="status" style="margin: 25px;">loading..</p>
             </div>
             <div class="container">
                 <div id="output"></div>
@@ -46,10 +47,10 @@
         <script src="./index.js">
         </script>
         <div>
-            <p> ------------------------------------------------------------------------------------</p>
+            <p style="margin-top: 60px;"> ------------------------------------------------------------------------------------</p>
 
-            <button id="detailedButton" color="white" class="btn3" onClick="loadDetailed()">load detailed model (longer generation time)</button>
-            <button id="undetailedButton" color="white" class="btn3" onClick="loadCheap()">load cheap model (shorter generation time)</button>
+            <button id="detailedButton" color="white" class="btn" onClick="loadDetailed()">load detailed model (longer generation time)</button>
+            <button id="undetailedButton" color="white" class="btn" onClick="loadCheap()">load cheap model (shorter generation time)</button>
 
 
             <p> ------------------------------------------------------------------------------------</p>

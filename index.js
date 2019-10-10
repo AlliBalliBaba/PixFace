@@ -20,8 +20,8 @@ function setup() {
     outputContainer = select('#output');
     statusMsg = select('#status');
     transferBtn = select('#transferBtn').hide();
-    detailedBtn = select('#detailedButton').show();
-    undetailedBtn = select('#undetailedButton').hide();
+    detailedBtn = select('#detailedButton').hide();
+    undetailedBtn = select('#undetailedButton').show();
 
     // Display initial placeholder image
     loadImage('./images/input.png', inputImg => image(inputImg, 0, 0));

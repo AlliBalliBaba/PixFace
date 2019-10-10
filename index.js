@@ -38,7 +38,7 @@ function setup() {
         mobile = true;
         undetailedBtn.hide();
         detailedBtn.show();
-        PixFace = pix2pix('./model/PixFaceHeavy.pict', onModelLoad);
+        PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
     } else {
         mobile = false;
         PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
@@ -61,7 +61,7 @@ function draw() {
 //change between the 3 GAN models
 function loadDetailed() {
     hideButton();
-    PixFace = pix2pix('./model/PixFaceHeavy.pict', onModelLoad);
+    PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
     undetailedBtn.show();
     detailedBtn.hide();
 }

@@ -36,14 +36,12 @@ function setup() {
     //change the displayed model, if the website is viewed on mobile
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         mobile = true;
-        document.getElementById("detailedButton").innerHTML = "load detailed mobile model (longer generation time)";
-        document.getElementById("undetailedButton").innerHTML = "load cheap mobile model (shorter generation time)";
-        document.getElementById("detailedButton").onclick = loadCheap2;
-        document.getElementById("undetailedButton").onclick = loadVeryCheap;
-        PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
+        undetailedBtn.hide();
+        detailedBtn.show();
+        PixFace = pix2pix('./model/PixFaceHeavy.pict', onModelLoad);
     } else {
         mobile = false;
-        PixFace = pix2pix('./model/PixFace.pict', onModelLoad)
+        PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
     }
 
     document.getElementById("lotxt").innerHTML = "";
@@ -69,20 +67,6 @@ function loadDetailed() {
 }
 
 function loadCheap() {
-    hideButton();
-    PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
-    undetailedBtn.hide();
-    detailedBtn.show();
-}
-
-function loadCheap2() {
-    hideButton();
-    PixFace = pix2pix('./model/PixFace.pict', onModelLoad);
-    undetailedBtn.show();
-    detailedBtn.hide();
-}
-
-function loadVeryCheap() {
     hideButton();
     PixFace = pix2pix('./model/PixFaceLightLight.pict', onModelLoad);
     undetailedBtn.hide();

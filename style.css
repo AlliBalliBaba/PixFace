@@ -1,12 +1,12 @@
 #box{
     width: 75%;
-    margin-left: auto
-    ;margin-right: auto; 
-    background: linear-gradient(0deg, rgb(219, 248, 255) 0%, rgb(255, 255, 255) 100%);
+    margin-left: auto;
+    margin-right: auto; 
+    background: linear-gradient(0deg, rgb(255, 247, 239) 0%, rgb(255, 255, 255) 100%);
     padding: 30px;
-    -webkit-clip-path: polygon(0 30px, 0 100%, 100% 100%,100% 30px, 50% 20px);
-    clip-path: polygon(0 30px, 0 100%, 100% 100%,100% 30px, 50% 20px);
-   
+    -webkit-clip-path: polygon(0 35px, 0 100%, 100% 100%,100% 35px, 75% 20px, 25% 20px);
+    clip-path: polygon(0 35px, 0 100%, 100% 100%,100% 35px, 75% 20px, 25% 20px);
+    
 }
 
 h1{
@@ -30,7 +30,7 @@ h1{
 
 body {
     font-family: monospace;
-    background: linear-gradient(76deg, rgba(255,255,255,1) 0%, rgba(245,255,228,1) 100%);
+    background: linear-gradient(76deg, rgba(255,255,255,1) 0%, rgb(255, 250, 228) 100%);
     filter: drop-shadow(0 0 6px rgba(50, 50, 0, 0.5));
 }
 
@@ -82,11 +82,12 @@ button:hover {
 
 #canvasContainer {
     touch-action: none;
-    box-shadow: 0 0 10px black;
+    
 }
 
 .inputCanv {
     border: 3px solid white;
+    box-shadow: 0 0 10px black;
 }
 
 .inputCanv:hover {

@@ -78,6 +78,10 @@ button:hover {
     margin-top: 80px;
 }
 
+#text1{
+
+}
+
 .inputCanv {
     border: 1px solid rgb(0, 0, 0);
     box-shadow: 0 0 10px black;
@@ -92,3 +96,9 @@ button:hover {
     box-shadow: 0 0 10px black;
 }
 
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

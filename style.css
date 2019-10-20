@@ -8,7 +8,7 @@
 
 h1{
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
 }
 .blackbox{
     text-align: center;
@@ -33,7 +33,7 @@ body {
     font-family: monospace;
     background: linear-gradient(76deg, rgb(255, 255, 255) 0%, rgb(245, 255, 249) 100%);
     filter: drop-shadow(0 0 2px rgba(50, 50, 0, 0.5));
-    padding: 20px;
+    padding: 5px;
 }
 
 .flex {
@@ -78,9 +78,6 @@ button:hover {
     margin-top: 80px;
 }
 
-#text1{
-
-}
 
 .inputCanv {
     border: 1px solid rgb(0, 0, 0);
@@ -100,5 +97,6 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -120%);
+    font-size: 40px;
   }

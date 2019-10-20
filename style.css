@@ -97,6 +97,6 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -120%);
-    font-size: 40px;
+    transform: translate(-50%, -110%);
+    font-size: 30px;
   }

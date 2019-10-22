@@ -1,5 +1,6 @@
 #box{
     width: 75%;
+    min-width: 265px;
     margin-left: auto;
     margin-right: auto; 
     background-color: rgb(250, 250, 250);;
